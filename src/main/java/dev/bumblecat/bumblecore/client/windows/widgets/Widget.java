@@ -119,10 +119,6 @@ abstract class Widget<T extends IWidget> implements IWidget {
 
 
 
-    @Override
-    public ResourceLocation getTexture() {
-        return null;
-    }
 
     @Override
     public boolean getTexture3x3() {

@@ -141,7 +141,7 @@ abstract class ClientWindowAbstract<T extends AbstractContainerMenu> extends Abs
 
         RenderSystem.setShaderTexture(0, ((IClientWindow) this).getWindowType() == WindowType.Machine ? texture_machine : texture_generic);
         ((IClientWindow) this).onWindowRendering(
-                new WindowEvent((IClientWindow) this, new RenderEventArgs())
+                new WindowEvent((IClientWindow) this, new RenderEventArgs(matrix))
         );
 
 
@@ -162,7 +162,7 @@ abstract class ClientWindowAbstract<T extends AbstractContainerMenu> extends Abs
                 RenderSystem.setShaderTexture(0, widget.getTexture());
             }
             ((IClientWindow) this).onWidgetRendering(
-                    new WidgetEvent(widget, new RenderEventArgs())
+                    new WidgetEvent(widget, new RenderEventArgs(matrix))
             );
         }
     }

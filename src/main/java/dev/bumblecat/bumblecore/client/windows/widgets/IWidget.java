@@ -4,6 +4,8 @@ import dev.bumblecat.bumblecore.client.windows.IClientWindow;
 
 import net.minecraft.resources.ResourceLocation;
 
+import java.awt.*;
+
 public interface IWidget {
 
     /**
@@ -12,8 +14,6 @@ public interface IWidget {
      * @return
      */
     IClientWindow getWindow();
-
-
 
 
     /**
@@ -40,10 +40,45 @@ public interface IWidget {
     IWidget setVisible(boolean value);
 
 
+    /**
+     * @return
+     */
+    Point getLocation();
 
 
+    /**
+     * @return
+     */
+    Dimension getSize();
 
+    /**
+     * @param w
+     * @param h
+     */
+    IWidget setSize(int w, int h);
+
+    /**
+     * @param dimension
+     */
+    IWidget setSize(Dimension dimension);
+
+
+    /**
+     * Gets the custom texture to be used.
+     * @return
+     */
     ResourceLocation getTexture();
+
+    /**
+     * Gets the location and size of the sprite to be drawn.
+     * @return
+     */
+    Rectangle getSpritePosition();
+
+
+
+
+
 
 
     boolean getTexture3x3();
@@ -51,14 +86,6 @@ public interface IWidget {
     IWidget setTexture3x3();
 
     IWidget setTexture3x3(boolean value);
-
-
-
-
-
-
-
-
 
 
     /**
@@ -94,9 +121,9 @@ public interface IWidget {
     <T extends IWidget> IWidget onMouseMoved(Runnable runnable);
 
     /**
-     *
      * @param runnable
      * @param <T>
+     *
      * @return
      */
     <T extends IWidget> IWidget onValueChanged(Runnable runnable);
