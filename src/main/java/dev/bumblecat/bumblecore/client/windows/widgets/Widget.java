@@ -20,7 +20,7 @@ abstract class Widget<T extends IWidget> implements IWidget {
     private boolean visible;
 
     public Widget(IClientWindow window) {
-        this(window, new Rectangle(7, 7, 18, 18));
+        this(window, new Rectangle(0, 0, 0, 0));
     }
 
     /**
