@@ -15,6 +15,7 @@ abstract class Widget<T extends IWidget> implements IWidget {
     private final Rectangle bounds;
 
     private boolean visible;
+    private boolean gridded;
 
     public Widget(IClientWindow window) {
         this(window, new Rectangle(0, 0, 0, 0));
@@ -106,20 +107,40 @@ abstract class Widget<T extends IWidget> implements IWidget {
         return this;
     }
 
-
+    /**
+     * Gets whether the texture for this widget should
+     * be treated as a 3x3 gridded texture.
+     *
+     * @return
+     */
     @Override
     public boolean getTexture3x3() {
-        return false;
+        return this.gridded;
     }
 
+    /**
+     * Sets whether the texture for this widget should
+     * be treated as a 3x3 gridded texture.
+     *
+     * @return
+     */
     @Override
     public IWidget setTexture3x3() {
-        return null;
+        return setTexture3x3(true);
     }
 
+    /**
+     * Sets whether the texture for this widget should
+     * be treated as a 3x3 gridded texture.
+     *
+     * @param value
+     *
+     * @return
+     */
     @Override
     public IWidget setTexture3x3(boolean value) {
-        return null;
+        this.gridded = value;
+        return this;
     }
 
 

@@ -66,26 +66,44 @@ public interface IWidget {
 
     /**
      * Gets the custom texture to be used.
+     *
      * @return
      */
     ResourceLocation getTexture();
 
     /**
      * Gets the location and size of the sprite to be drawn.
+     *
      * @return
      */
     Rectangle getSpritePosition();
 
 
-
-
-
-
-
+    /**
+     * Gets whether the texture for this widget should
+     * be treated as a 3x3 gridded texture.
+     *
+     * @return
+     */
     boolean getTexture3x3();
 
+    /**
+     * Sets whether the texture for this widget should
+     * be treated as a 3x3 gridded texture.
+     *
+     * @return
+     */
     IWidget setTexture3x3();
 
+
+    /**
+     * Sets whether the texture for this widget should
+     * be treated as a 3x3 gridded texture.
+     *
+     * @param value
+     *
+     * @return
+     */
     IWidget setTexture3x3(boolean value);
 
 
