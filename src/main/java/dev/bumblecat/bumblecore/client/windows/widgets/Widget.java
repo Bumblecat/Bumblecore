@@ -1,10 +1,7 @@
 package dev.bumblecat.bumblecore.client.windows.widgets;
 
 import dev.bumblecat.bumblecore.client.windows.IClientWindow;
-import dev.bumblecat.bumblecore.client.windows.events.IEventType;
-import dev.bumblecat.bumblecore.client.windows.events.WidgetEventType;
-
-import net.minecraft.resources.ResourceLocation;
+import dev.bumblecat.bumblecore.client.windows.events.*;
 
 import java.awt.*;
 import java.util.HashMap;
@@ -76,7 +73,6 @@ abstract class Widget<T extends IWidget> implements IWidget {
     }
 
     /**
-     *
      * @return
      */
     public Point getLocation() {
@@ -84,7 +80,6 @@ abstract class Widget<T extends IWidget> implements IWidget {
     }
 
     /**
-     *
      * @return
      */
     public Dimension getSize() {
@@ -92,9 +87,9 @@ abstract class Widget<T extends IWidget> implements IWidget {
     }
 
     /**
-     *
      * @param w
      * @param h
+     *
      * @return
      */
     public IWidget setSize(int w, int h) {
@@ -102,22 +97,14 @@ abstract class Widget<T extends IWidget> implements IWidget {
     }
 
     /**
-     *
      * @param size
+     *
      * @return
      */
     public IWidget setSize(Dimension size) {
         this.bounds.setSize(size);
         return this;
     }
-
-
-
-
-
-
-
-
 
 
     @Override
@@ -137,13 +124,48 @@ abstract class Widget<T extends IWidget> implements IWidget {
 
 
     /**
+     * @param event
+     */
+    @Override
+    public void doValidateEvent(WidgetEvent event) {
+        if (event.getArguments() instanceof MouseEventArgs) {
+            switch ((MouseEventType) event.getArguments().getEventType()) {
+                case MousePressed -> {
+                    if (this.onMousePressed((MouseEventArgs) event.getArguments())) {
+                        if (runnables.containsKey(MouseEventType.MousePressed)) {
+                            runnables.get(MouseEventType.MousePressed).run();
+                        }
+                    }
+                }
+                case MouseRelease -> {
+                    if (this.onMouseRelease((MouseEventArgs) event.getArguments())) {
+                        if (runnables.containsKey(MouseEventType.MouseRelease)) {
+                            runnables.get(MouseEventType.MouseRelease).run();
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /**
      * @param runnable
      *
      * @return
      */
     @Override
     public <T extends IWidget> IWidget onMousePressed(Runnable runnable) {
-        return null;
+        runnables.putIfAbsent(MouseEventType.MousePressed, runnable);
+        return this;
+    }
+
+    /**
+     * @param arguments
+     *
+     * @return
+     */
+    public boolean onMousePressed(MouseEventArgs arguments) {
+        return true;
     }
 
     /**
@@ -153,7 +175,17 @@ abstract class Widget<T extends IWidget> implements IWidget {
      */
     @Override
     public <T extends IWidget> IWidget onMouseRelease(Runnable runnable) {
-        return null;
+        runnables.putIfAbsent(MouseEventType.MouseRelease, runnable);
+        return this;
+    }
+
+    /**
+     * @param arguments
+     *
+     * @return
+     */
+    public boolean onMouseRelease(MouseEventArgs arguments) {
+        return true;
     }
 
     /**
@@ -163,7 +195,18 @@ abstract class Widget<T extends IWidget> implements IWidget {
      */
     @Override
     public <T extends IWidget> IWidget onMouseHover(Runnable runnable) {
-        return null;
+        runnables.putIfAbsent(MouseEventType.MouseHover, runnable);
+        return this;
+    }
+
+
+    /**
+     * @param arguments
+     *
+     * @return
+     */
+    public boolean onMouseHover(MouseEventArgs arguments) {
+        return true;
     }
 
     /**
@@ -173,7 +216,17 @@ abstract class Widget<T extends IWidget> implements IWidget {
      */
     @Override
     public <T extends IWidget> IWidget onMouseMoved(Runnable runnable) {
-        return null;
+        runnables.putIfAbsent(MouseEventType.MouseMoved, runnable);
+        return this;
+    }
+
+    /**
+     * @param arguments
+     *
+     * @return
+     */
+    public boolean onMouseMoved(MouseEventArgs arguments) {
+        return true;
     }
 
     /**

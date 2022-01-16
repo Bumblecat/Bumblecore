@@ -11,6 +11,7 @@ public class RenderEventArgs extends WindowEventArgs<RenderEventArgs> {
     private Point mouse;
 
     public RenderEventArgs(PoseStack matrix) {
+        super(RenderEventType.Default);
         this.matrix = matrix;
     }
 

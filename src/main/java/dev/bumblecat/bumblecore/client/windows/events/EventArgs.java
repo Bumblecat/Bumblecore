@@ -1,10 +1,13 @@
 package dev.bumblecat.bumblecore.client.windows.events;
 
-abstract class EventArgs<T> {
+public abstract class EventArgs<T> {
 
+    private final IEventType eventType;
     private Event owner;
 
-    public EventArgs() {
+
+    public EventArgs(IEventType eventType) {
+        this.eventType = eventType;
     }
 
     /**
@@ -23,5 +26,14 @@ abstract class EventArgs<T> {
      */
     public Event getOwner() {
         return this.owner;
+    }
+
+
+    /**
+     *
+     * @return
+     */
+    public IEventType getEventType() {
+        return this.eventType;
     }
 }

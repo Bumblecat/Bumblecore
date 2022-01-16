@@ -2,7 +2,7 @@ package dev.bumblecat.bumblecore.client.windows.events;
 
 import dev.bumblecat.bumblecore.client.windows.IClientWindow;
 
-abstract class Event {
+public abstract class Event {
 
     private final IClientWindow window;
 
@@ -16,4 +16,7 @@ abstract class Event {
     public IClientWindow getWindow() {
         return this.window;
     }
+
+
+    public abstract EventArgs<?> getArguments();
 }

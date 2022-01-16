@@ -1,8 +1,6 @@
 package dev.bumblecat.bumblecore.client.windows;
 
-import dev.bumblecat.bumblecore.client.windows.events.RenderEventArgs;
-import dev.bumblecat.bumblecore.client.windows.events.WidgetEvent;
-import dev.bumblecat.bumblecore.client.windows.events.WindowEvent;
+import dev.bumblecat.bumblecore.client.windows.events.*;
 import dev.bumblecat.bumblecore.client.windows.widgets.IWidget;
 
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
@@ -43,7 +41,9 @@ abstract class ClientWindowAbstract<T extends AbstractContainerMenu> extends Abs
         ((IClientWindow) this).onWindowCreated();
     }
 
-
+    /**
+     *
+     */
     @Override
     protected final void init() {
         super.init();
@@ -168,6 +168,42 @@ abstract class ClientWindowAbstract<T extends AbstractContainerMenu> extends Abs
     }
 
 
+    @Override
+    public final boolean mouseClicked(double mouseX, double mouseY, int button) {
+        for (IWidget widget : getVisibleWidgets())
+            widget.doValidateEvent(new WidgetEvent(widget,
+                    new MouseEventArgs(MouseEventType.MousePressed, new Point((int) mouseX, (int) mouseY), button)));
+
+        doValidateEvent(new WindowEvent((IClientWindow) this,
+                new MouseEventArgs(MouseEventType.MousePressed, new Point((int) mouseX, (int) mouseY), button)));
+
+
+        return super.mouseClicked(mouseX, mouseY, button);
+    }
+
+
+
+    @Override
+    public final boolean mouseReleased(double mouseX, double mouseY, int button) {
+        for (IWidget widget : getVisibleWidgets())
+            widget.doValidateEvent(new WidgetEvent(widget,
+                    new MouseEventArgs(MouseEventType.MouseRelease, new Point((int) mouseX, (int) mouseY), button)));
+
+        doValidateEvent(new WindowEvent((IClientWindow) this,
+                new MouseEventArgs(MouseEventType.MouseRelease, new Point((int) mouseX, (int) mouseY), button)));
+
+        return super.mouseReleased(mouseX, mouseY, button);
+    }
+
+
+
+
+
+    private void doValidateEvent(WindowEvent event) {
+
+    }
+
+
     /**
      * @return
      */
@@ -222,7 +258,6 @@ abstract class ClientWindowAbstract<T extends AbstractContainerMenu> extends Abs
         this.imageWidth = (int) (w > minSize.getWidth() ? Math.min(w, maxSize.getWidth()) : minSize.getWidth());
         this.imageHeight = (int) (h > minSize.getHeight() ? Math.min(h, maxSize.getHeight()) : minSize.getHeight());
     }
-
 
     /**
      * @return
