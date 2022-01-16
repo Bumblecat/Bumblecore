@@ -33,6 +33,6 @@ public class Aperture extends Widget<Aperture> implements IWidget {
      */
     @Override
     public Rectangle getSpritePosition() {
-        return new Rectangle(48,0,18,18);
+        return new Rectangle(48,0,16,16);
     }
 }

@@ -1,6 +1,7 @@
 package dev.bumblecat.bumblecore.client.windows.widgets;
 
 import dev.bumblecat.bumblecore.client.windows.IClientWindow;
+import dev.bumblecat.bumblecore.client.windows.events.MouseEventArgs;
 
 import net.minecraft.resources.ResourceLocation;
 
@@ -16,6 +17,17 @@ public class CheckBox extends Widget<CheckBox> implements IWidget {
      */
     public CheckBox(IClientWindow window, Rectangle destination) {
         super(window, destination);
+    }
+
+    /**
+     * @param arguments
+     *
+     * @return
+     */
+    @Override
+    public boolean onMouseRelease(MouseEventArgs arguments) {
+        this.checked = !checked;
+        return super.onMouseRelease(arguments);
     }
 
     /**
