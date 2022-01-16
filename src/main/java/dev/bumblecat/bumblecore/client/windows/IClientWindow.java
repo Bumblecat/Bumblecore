@@ -30,6 +30,8 @@ public interface IClientWindow {
 
 
     /**
+     * Defines what texture is to be used to draw the window.
+     * (WindowType.Generic & WindowType.Machine)
      *
      * @return
      */

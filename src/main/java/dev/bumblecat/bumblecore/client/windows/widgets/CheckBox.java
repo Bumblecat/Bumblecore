@@ -2,6 +2,8 @@ package dev.bumblecat.bumblecore.client.windows.widgets;
 
 import dev.bumblecat.bumblecore.client.windows.IClientWindow;
 import dev.bumblecat.bumblecore.client.windows.events.MouseEventArgs;
+import dev.bumblecat.bumblecore.client.windows.events.ValueChangedEventArgs;
+import dev.bumblecat.bumblecore.client.windows.events.WidgetEvent;
 
 import net.minecraft.resources.ResourceLocation;
 
@@ -26,8 +28,10 @@ public class CheckBox extends Widget<CheckBox> implements IWidget {
      */
     @Override
     public boolean onMouseRelease(MouseEventArgs arguments) {
-        this.checked = !checked;
-        return super.onMouseRelease(arguments);
+        if (super.onMouseRelease(arguments)) {
+            this.checked = !checked;
+        }
+        return true;
     }
 
     /**
@@ -43,6 +47,8 @@ public class CheckBox extends Widget<CheckBox> implements IWidget {
      * @return
      */
     public void setValue(boolean value) {
+        if (value != this.checked)
+            doValidateEvent(new WidgetEvent(this, new ValueChangedEventArgs<Boolean>(this.checked, value)));
         this.checked = value;
     }
 

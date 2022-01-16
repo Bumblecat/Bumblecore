@@ -129,7 +129,7 @@ public interface IWidget {
      *
      * @return
      */
-    <T extends IWidget> IWidget onMouseHover(Runnable runnable);
+    <T extends IWidget> IWidget onMouseScroll(Runnable runnable);
 
     /**
      * @param runnable
@@ -137,7 +137,7 @@ public interface IWidget {
      *
      * @return
      */
-    <T extends IWidget> IWidget onMouseMoved(Runnable runnable);
+    <T extends IWidget> IWidget onMouseMoving(Runnable runnable);
 
     /**
      * @param runnable

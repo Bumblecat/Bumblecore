@@ -149,6 +149,17 @@ abstract class Widget<T extends IWidget> implements IWidget {
      */
     @Override
     public void doValidateEvent(WidgetEvent event) {
+
+        if (event.getArguments() instanceof ValueChangedEventArgs<?>) {
+            switch ((WidgetEventType) event.getArguments().getEventType()) {
+                case ValueChanged -> {
+                    if (runnables.containsKey(WidgetEventType.ValueChanged)) {
+                        runnables.get(WidgetEventType.ValueChanged).run();
+                    }
+                }
+            }
+        }
+
         if (event.getArguments() instanceof MouseEventArgs) {
             switch ((MouseEventType) event.getArguments().getEventType()) {
                 case MousePressed -> {
@@ -162,6 +173,20 @@ abstract class Widget<T extends IWidget> implements IWidget {
                     if (this.onMouseRelease((MouseEventArgs) event.getArguments())) {
                         if (runnables.containsKey(MouseEventType.MouseRelease)) {
                             runnables.get(MouseEventType.MouseRelease).run();
+                        }
+                    }
+                }
+                case MouseScroll -> {
+                    if (this.onMouseScroll((MouseEventArgs) event.getArguments())) {
+                        if (runnables.containsKey(MouseEventType.MouseScroll)) {
+                            runnables.get(MouseEventType.MouseScroll).run();
+                        }
+                    }
+                }
+                case MouseMoving -> {
+                    if (this.onMouseMoving((MouseEventArgs) event.getArguments())) {
+                        if (runnables.containsKey(MouseEventType.MouseMoving)) {
+                            runnables.get(MouseEventType.MouseMoving).run();
                         }
                     }
                 }
@@ -186,7 +211,10 @@ abstract class Widget<T extends IWidget> implements IWidget {
      * @return
      */
     public boolean onMousePressed(MouseEventArgs arguments) {
-        return true;
+        if (this.bounds.contains(arguments.getMousePointOnWindow())) {
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -206,7 +234,10 @@ abstract class Widget<T extends IWidget> implements IWidget {
      * @return
      */
     public boolean onMouseRelease(MouseEventArgs arguments) {
-        return true;
+        if (this.bounds.contains(arguments.getMousePointOnWindow())) {
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -215,8 +246,8 @@ abstract class Widget<T extends IWidget> implements IWidget {
      * @return
      */
     @Override
-    public <T extends IWidget> IWidget onMouseHover(Runnable runnable) {
-        runnables.putIfAbsent(MouseEventType.MouseHover, runnable);
+    public <T extends IWidget> IWidget onMouseScroll(Runnable runnable) {
+        runnables.putIfAbsent(MouseEventType.MouseScroll, runnable);
         return this;
     }
 
@@ -226,7 +257,7 @@ abstract class Widget<T extends IWidget> implements IWidget {
      *
      * @return
      */
-    public boolean onMouseHover(MouseEventArgs arguments) {
+    public boolean onMouseScroll(MouseEventArgs arguments) {
         return true;
     }
 
@@ -236,8 +267,8 @@ abstract class Widget<T extends IWidget> implements IWidget {
      * @return
      */
     @Override
-    public <T extends IWidget> IWidget onMouseMoved(Runnable runnable) {
-        runnables.putIfAbsent(MouseEventType.MouseMoved, runnable);
+    public <T extends IWidget> IWidget onMouseMoving(Runnable runnable) {
+        runnables.putIfAbsent(MouseEventType.MouseMoving, runnable);
         return this;
     }
 
@@ -246,8 +277,11 @@ abstract class Widget<T extends IWidget> implements IWidget {
      *
      * @return
      */
-    public boolean onMouseMoved(MouseEventArgs arguments) {
-        return true;
+    public boolean onMouseMoving(MouseEventArgs arguments) {
+        if (this.bounds.contains(arguments.getMousePointOnWindow())) {
+            return true;
+        }
+        return false;
     }
 
     /**

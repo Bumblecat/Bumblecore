@@ -4,7 +4,6 @@ public enum MouseEventType implements IEventType {
     MousePressed,
     MouseRelease,
     MouseDragged,
-    MouseWheeled,
-    MouseMoved,
-    MouseHover
+    MouseScroll,
+    MouseMoving,
 }

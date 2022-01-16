@@ -167,7 +167,13 @@ abstract class ClientWindowAbstract<T extends AbstractContainerMenu> extends Abs
         }
     }
 
-
+    /**
+     * @param mouseX
+     * @param mouseY
+     * @param button
+     *
+     * @return
+     */
     @Override
     public final boolean mouseClicked(double mouseX, double mouseY, int button) {
         for (IWidget widget : getVisibleWidgets())
@@ -181,8 +187,13 @@ abstract class ClientWindowAbstract<T extends AbstractContainerMenu> extends Abs
         return super.mouseClicked(mouseX, mouseY, button);
     }
 
-
-
+    /**
+     * @param mouseX
+     * @param mouseY
+     * @param button
+     *
+     * @return
+     */
     @Override
     public final boolean mouseReleased(double mouseX, double mouseY, int button) {
         for (IWidget widget : getVisibleWidgets())
@@ -195,12 +206,25 @@ abstract class ClientWindowAbstract<T extends AbstractContainerMenu> extends Abs
         return super.mouseReleased(mouseX, mouseY, button);
     }
 
+    /**
+     * @param mouseX
+     * @param mouseY
+     */
+    @Override
+    public final void mouseMoved(double mouseX, double mouseY) {
+        for (IWidget widget : getVisibleWidgets())
+            widget.doValidateEvent(new WidgetEvent(widget,
+                    new MouseEventArgs(MouseEventType.MouseMoving, new Point((int) mouseX, (int) mouseY))));
 
+        doValidateEvent(new WindowEvent((IClientWindow) this,
+                new MouseEventArgs(MouseEventType.MouseMoving, new Point((int) mouseX, (int) mouseY))));
 
+        super.mouseMoved(mouseX, mouseY);
+    }
 
 
     private void doValidateEvent(WindowEvent event) {
-
+//@todo.
     }
 
 
