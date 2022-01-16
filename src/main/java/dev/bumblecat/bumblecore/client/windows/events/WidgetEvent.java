@@ -16,7 +16,6 @@ public class WidgetEvent extends Event {
     }
 
     /**
-     *
      * @return
      */
     public IWidget getWidget() {

@@ -211,10 +211,7 @@ abstract class Widget<T extends IWidget> implements IWidget {
      * @return
      */
     public boolean onMousePressed(MouseEventArgs arguments) {
-        if (this.bounds.contains(arguments.getMousePointOnWindow())) {
-            return true;
-        }
-        return false;
+        return this.bounds.contains(arguments.getMousePointOnWindow());
     }
 
     /**
@@ -234,10 +231,7 @@ abstract class Widget<T extends IWidget> implements IWidget {
      * @return
      */
     public boolean onMouseRelease(MouseEventArgs arguments) {
-        if (this.bounds.contains(arguments.getMousePointOnWindow())) {
-            return true;
-        }
-        return false;
+        return this.bounds.contains(arguments.getMousePointOnWindow());
     }
 
     /**
@@ -278,10 +272,7 @@ abstract class Widget<T extends IWidget> implements IWidget {
      * @return
      */
     public boolean onMouseMoving(MouseEventArgs arguments) {
-        if (this.bounds.contains(arguments.getMousePointOnWindow())) {
-            return true;
-        }
-        return false;
+        return this.bounds.contains(arguments.getMousePointOnWindow());
     }
 
     /**

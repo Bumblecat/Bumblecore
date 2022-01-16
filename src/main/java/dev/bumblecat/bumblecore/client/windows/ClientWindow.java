@@ -20,7 +20,6 @@ public abstract class ClientWindow<T extends CommonWindow> extends ClientWindowA
     }
 
     /**
-     *
      * @param event
      */
     @Override
@@ -45,7 +44,6 @@ public abstract class ClientWindow<T extends CommonWindow> extends ClientWindowA
     }
 
     /**
-     *
      * @param event
      */
     @Override
@@ -56,7 +54,7 @@ public abstract class ClientWindow<T extends CommonWindow> extends ClientWindowA
 
         if (!event.getWidget().getTexture3x3()) {
 
-            this.blit(((RenderEventArgs)event.getArguments()).getMatrix(), destX, destY,
+            this.blit(((RenderEventArgs) event.getArguments()).getMatrix(), destX, destY,
                     (int) event.getWidget().getSpritePosition().getX(), (int) event.getWidget().getSpritePosition().getY(),
                     (int) event.getWidget().getSpritePosition().getWidth(), (int) event.getWidget().getSpritePosition().getHeight()
             );
@@ -76,7 +74,7 @@ public abstract class ClientWindow<T extends CommonWindow> extends ClientWindowA
                     int textureY = originY + (j >= (event.getWidget().getSize().getHeight() / gridY) - 1
                             ? (int) event.getWidget().getSpritePosition().getHeight() - gridY : j > 0 ? gridY : 0);
 
-                    blit(((RenderEventArgs)event.getArguments()).getMatrix(),
+                    blit(((RenderEventArgs) event.getArguments()).getMatrix(),
                             (destX + (i * gridX)), (destY + (j * gridY)), textureX, textureY, gridX, gridY);
                 }
             }

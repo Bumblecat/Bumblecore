@@ -27,19 +27,18 @@ public interface IWidget {
     /**
      * Sets whether this widget is visible on screen.
      *
-     * @return
-     */
-    IWidget setVisible();
-
-    /**
-     * Sets whether this widget is visible on screen.
-     *
      * @param value
      *
      * @return
      */
     IWidget setVisible(boolean value);
 
+    /**
+     * Sets whether this widget is visible on screen.
+     *
+     * @return
+     */
+    IWidget setVisible();
 
     /**
      * @return
@@ -53,16 +52,15 @@ public interface IWidget {
     Dimension getSize();
 
     /**
-     * @param w
-     * @param h
-     */
-    IWidget setSize(int w, int h);
-
-    /**
      * @param dimension
      */
     IWidget setSize(Dimension dimension);
 
+    /**
+     * @param w
+     * @param h
+     */
+    IWidget setSize(int w, int h);
 
     /**
      * Gets the custom texture to be used.
@@ -91,21 +89,19 @@ public interface IWidget {
      * Sets whether the texture for this widget should
      * be treated as a 3x3 gridded texture.
      *
-     * @return
-     */
-    IWidget setTexture3x3();
-
-
-    /**
-     * Sets whether the texture for this widget should
-     * be treated as a 3x3 gridded texture.
-     *
      * @param value
      *
      * @return
      */
     IWidget setTexture3x3(boolean value);
 
+    /**
+     * Sets whether the texture for this widget should
+     * be treated as a 3x3 gridded texture.
+     *
+     * @return
+     */
+    IWidget setTexture3x3();
 
     /**
      * @param runnable

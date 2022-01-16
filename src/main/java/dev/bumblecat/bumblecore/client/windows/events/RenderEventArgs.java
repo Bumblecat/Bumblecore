@@ -6,7 +6,7 @@ import java.awt.*;
 
 public class RenderEventArgs extends WindowEventArgs<RenderEventArgs> {
 
-    private PoseStack matrix;
+    private final PoseStack matrix;
 
     private Point mouse;
 

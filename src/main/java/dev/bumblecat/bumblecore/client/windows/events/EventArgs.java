@@ -11,8 +11,8 @@ public abstract class EventArgs<T> {
     }
 
     /**
-     *
      * @param value
+     *
      * @return
      */
     public Event setOwner(Event value) {
@@ -21,7 +21,6 @@ public abstract class EventArgs<T> {
     }
 
     /**
-     *
      * @return
      */
     public Event getOwner() {
@@ -30,7 +29,6 @@ public abstract class EventArgs<T> {
 
 
     /**
-     *
      * @return
      */
     public IEventType getEventType() {

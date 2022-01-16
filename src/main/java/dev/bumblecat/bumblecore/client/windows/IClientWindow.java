@@ -37,65 +37,42 @@ public interface IClientWindow {
      */
     @NotNull WindowType getWindowType();
 
-
-
-
-
-
+    /**
+     * @return
+     */
+    int getLabelColor();
 
     /**
-     *
      * @param value
      */
     void setLabelColor(int value);
 
     /**
-     *
-     * @return
-     */
-    int getLabelColor();
-
-
-
-
-
-    /**
-     *
      * @return
      */
     Point getLocation();
 
 
-
     /**
-     *
      * @return
      */
     Dimension getScreenSize();
 
     /**
-     *
      * @return
      */
     Dimension getSize();
 
     /**
-     *
-     * @param w
-     * @param h
-     */
-    void setSize(int w, int h);
-
-    /**
-     *
      * @param dimension
      */
     void setSize(Dimension dimension);
 
-
-
-
-
+    /**
+     * @param w
+     * @param h
+     */
+    void setSize(int w, int h);
 
 
 }
