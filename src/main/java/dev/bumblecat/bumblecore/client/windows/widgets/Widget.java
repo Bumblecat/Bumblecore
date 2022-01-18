@@ -3,6 +3,10 @@ package dev.bumblecat.bumblecore.client.windows.widgets;
 import dev.bumblecat.bumblecore.client.windows.IClientWindow;
 import dev.bumblecat.bumblecore.client.windows.events.*;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.resources.sounds.SimpleSoundInstance;
+import net.minecraft.sounds.SoundEvents;
+
 import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -295,5 +299,12 @@ abstract class Widget<T extends IWidget> implements IWidget {
     public <T extends IWidget> IWidget onVisibleChanged(Runnable runnable) {
         this.runnables.putIfAbsent(WidgetEventType.VisibilityChanged, runnable);
         return this;
+    }
+
+    /**
+     *
+     */
+    protected void playClickSound() {
+        Minecraft.getInstance().getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.UI_BUTTON_CLICK, 1.0F));
     }
 }

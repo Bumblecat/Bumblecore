@@ -1,6 +1,7 @@
 package dev.bumblecat.bumblecore.client.windows.widgets;
 
 import dev.bumblecat.bumblecore.client.windows.IClientWindow;
+import dev.bumblecat.bumblecore.client.windows.events.MouseEventArgs;
 
 import net.minecraft.resources.ResourceLocation;
 
@@ -34,5 +35,11 @@ public class Button extends Widget<Button> implements IWidget {
     @Override
     public Rectangle getSpritePosition() {
         return null;
+    }
+
+    @Override
+    public boolean onMouseRelease(MouseEventArgs arguments) {
+        playClickSound();
+        return super.onMouseRelease(arguments);
     }
 }

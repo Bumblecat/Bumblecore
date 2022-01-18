@@ -30,6 +30,7 @@ public class CheckBox extends Widget<CheckBox> implements IWidget {
     public boolean onMouseRelease(MouseEventArgs arguments) {
         if (super.onMouseRelease(arguments)) {
             this.checked = !checked;
+            playClickSound();
         }
         return true;
     }
