@@ -10,26 +10,26 @@ import net.minecraft.world.level.block.state.BlockState;
 
 import org.jetbrains.annotations.Nullable;
 
-public abstract class CustomItem extends CustomItemAbstract {
+public class CustomItem extends CustomItemAbstract {
 
     /**
      *
      */
-    protected CustomItem() {
+    public CustomItem() {
         this(new Variables());
     }
 
     /**
      * @param variables
      */
-    protected CustomItem(Variables variables) {
+    public CustomItem(Variables variables) {
         this(variables, null);
     }
 
     /**
      * @param nutrients
      */
-    protected CustomItem(@Nullable Nutrients nutrients) {
+    public CustomItem(@Nullable Nutrients nutrients) {
         this(new Variables(), nutrients);
     }
 
@@ -37,7 +37,7 @@ public abstract class CustomItem extends CustomItemAbstract {
      * @param variables
      * @param nutrients
      */
-    protected CustomItem(Variables variables, @Nullable Nutrients nutrients) {
+    public CustomItem(Variables variables, @Nullable Nutrients nutrients) {
         super(variables, nutrients);
     }
 
