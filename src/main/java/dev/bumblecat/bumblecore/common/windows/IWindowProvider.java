@@ -8,7 +8,7 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 
 import org.jetbrains.annotations.Nullable;
 
-public interface ICommonWindowProvider extends MenuProvider {
+public interface IWindowProvider extends MenuProvider {
 
     /**
      * @param windowId

@@ -9,6 +9,7 @@ import dev.bumblecat.bumblecore.common.network.Network;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 
 public abstract class Module {
 
@@ -24,6 +25,7 @@ public abstract class Module {
          */
         Functions.Shortcuts.getEventBus().addListener(this::onCommonSetupEvent);
         Functions.Shortcuts.getEventBus().addListener(this::onClientSetupEvent);
+        Functions.Shortcuts.getEventBus().addListener(this::onModuleReadyEvent);
 
         Functions.Shortcuts.getForgeEventBus().addListener(this::onRegisterCommandsEvent);
     }
@@ -49,6 +51,15 @@ public abstract class Module {
      * @param event
      */
     public void onClientSetupEvent(FMLClientSetupEvent event) {
+        /**
+         * No Op.
+         */
+    }
+
+    /**
+     * @param event
+     */
+    public void onModuleReadyEvent(FMLLoadCompleteEvent event) {
         /**
          * No Op.
          */
