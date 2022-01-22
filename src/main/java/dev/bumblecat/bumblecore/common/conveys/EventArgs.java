@@ -3,12 +3,13 @@ package dev.bumblecat.bumblecore.common.conveys;
 public abstract class EventArgs<T> implements IEventArgs {
 
     private IEvent event;
-    private IEventType eventType;
+    private final IEventType eventType;
 
     /**
      * @param eventType
      */
     public EventArgs(IEventType eventType) {
+        this.eventType = eventType;
     }
 
     /**
