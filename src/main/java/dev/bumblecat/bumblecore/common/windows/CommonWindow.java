@@ -52,8 +52,6 @@ public abstract class CommonWindow<T extends ICustomTileEntity> extends CommonWi
     public CommonWindow(MenuType<?> provider, int windowId, Inventory inventory, BlockPos blockPos, int slotCount) {
         super(provider, windowId, inventory, slotCount);
 
-        System.out.println(blockPos);
-
         this.blockEntity = (blockPos != null) ? (T) getPlayer().getLevel().getBlockEntity(blockPos) : null;
         this.inventory = (this.blockEntity instanceof IInventoryProvider) ? ((IInventoryProvider) this.blockEntity).getInventory() : null;
     }
