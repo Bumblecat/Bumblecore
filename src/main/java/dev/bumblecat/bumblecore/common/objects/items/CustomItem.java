@@ -2,6 +2,9 @@ package dev.bumblecat.bumblecore.common.objects.items;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -41,10 +44,19 @@ public class CustomItem extends CustomItemAbstract implements ICustomItem {
         super(variables, nutrients);
     }
 
+    /**
+     * @param level
+     * @param player
+     * @param hand
+     * @return
+     */
+    @Override
+    public InteractionResultHolder<ItemStack> onInteract(Level level, Player player, InteractionHand hand) {
+        return InteractionResultHolder.pass(player.getItemInHand(hand));
+    }
 
     /**
      * @param stack
-     *
      * @return
      */
     public int getBarColor(ItemStack stack) {
@@ -54,7 +66,6 @@ public class CustomItem extends CustomItemAbstract implements ICustomItem {
     /**
      * @param stack
      * @param enchantment
-     *
      * @return
      */
     @Override
@@ -67,7 +78,6 @@ public class CustomItem extends CustomItemAbstract implements ICustomItem {
      * @param level
      * @param blockPos
      * @param player
-     *
      * @return
      */
     @Override
@@ -78,7 +88,6 @@ public class CustomItem extends CustomItemAbstract implements ICustomItem {
     /**
      * @param stack
      * @param state
-     *
      * @return
      */
     @Override

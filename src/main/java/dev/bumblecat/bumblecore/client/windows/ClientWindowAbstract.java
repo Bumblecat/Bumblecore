@@ -1,6 +1,6 @@
 package dev.bumblecat.bumblecore.client.windows;
 
-import dev.bumblecat.bumblecore.client.windows.events.*;
+import dev.bumblecat.bumblecore.client.conveys.*;
 import dev.bumblecat.bumblecore.client.windows.widgets.IWidget;
 
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;

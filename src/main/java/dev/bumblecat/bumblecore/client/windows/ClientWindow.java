@@ -1,8 +1,8 @@
 package dev.bumblecat.bumblecore.client.windows;
 
-import dev.bumblecat.bumblecore.client.windows.events.RenderEventArgs;
-import dev.bumblecat.bumblecore.client.windows.events.WidgetEvent;
-import dev.bumblecat.bumblecore.client.windows.events.WindowEvent;
+import dev.bumblecat.bumblecore.client.conveys.RenderEventArgs;
+import dev.bumblecat.bumblecore.client.conveys.WidgetEvent;
+import dev.bumblecat.bumblecore.client.conveys.WindowEvent;
 import dev.bumblecat.bumblecore.common.windows.CommonWindow;
 
 import net.minecraft.network.chat.Component;

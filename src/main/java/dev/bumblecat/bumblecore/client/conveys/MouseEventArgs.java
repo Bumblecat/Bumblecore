@@ -1,4 +1,6 @@
-package dev.bumblecat.bumblecore.client.windows.events;
+package dev.bumblecat.bumblecore.client.conveys;
+
+import dev.bumblecat.bumblecore.common.conveys.EventArgs;
 
 import java.awt.*;
 
@@ -34,8 +36,8 @@ public class MouseEventArgs extends EventArgs<MouseEventArgs> {
      */
     public Point getMousePointOnWindow() {
         return new Point(
-                (int) (getMousePointOnScreen().getX() - this.getOwner().getWindow().getLocation().getX()),
-                (int) (getMousePointOnScreen().getY() - this.getOwner().getWindow().getLocation().getY())
+                (int) (getMousePointOnScreen().getX() - ((IClientEvent)this.getEvent()).getWindow().getLocation().getX()),
+                (int) (getMousePointOnScreen().getY() - ((IClientEvent)this.getEvent()).getWindow().getLocation().getY())
         );
     }
 }

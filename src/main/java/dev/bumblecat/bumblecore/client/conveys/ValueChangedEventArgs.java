@@ -1,5 +1,6 @@
-package dev.bumblecat.bumblecore.client.windows.events;
+package dev.bumblecat.bumblecore.client.conveys;
 
+import dev.bumblecat.bumblecore.common.conveys.IEventType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

@@ -1,9 +1,9 @@
 package dev.bumblecat.bumblecore.client.windows.widgets;
 
 import dev.bumblecat.bumblecore.client.windows.IClientWindow;
-import dev.bumblecat.bumblecore.client.windows.events.MouseEventArgs;
-import dev.bumblecat.bumblecore.client.windows.events.ValueChangedEventArgs;
-import dev.bumblecat.bumblecore.client.windows.events.WidgetEvent;
+import dev.bumblecat.bumblecore.client.conveys.MouseEventArgs;
+import dev.bumblecat.bumblecore.client.conveys.ValueChangedEventArgs;
+import dev.bumblecat.bumblecore.client.conveys.WidgetEvent;
 
 import net.minecraft.resources.ResourceLocation;
 

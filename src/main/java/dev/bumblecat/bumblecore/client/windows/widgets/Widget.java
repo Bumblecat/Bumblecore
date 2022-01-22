@@ -1,8 +1,9 @@
 package dev.bumblecat.bumblecore.client.windows.widgets;
 
 import dev.bumblecat.bumblecore.client.windows.IClientWindow;
-import dev.bumblecat.bumblecore.client.windows.events.*;
+import dev.bumblecat.bumblecore.client.conveys.*;
 
+import dev.bumblecat.bumblecore.common.conveys.IEventType;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.sounds.SimpleSoundInstance;
 import net.minecraft.sounds.SoundEvents;

@@ -1,7 +1,7 @@
 package dev.bumblecat.bumblecore.client.windows;
 
-import dev.bumblecat.bumblecore.client.windows.events.WidgetEvent;
-import dev.bumblecat.bumblecore.client.windows.events.WindowEvent;
+import dev.bumblecat.bumblecore.client.conveys.WidgetEvent;
+import dev.bumblecat.bumblecore.client.conveys.WindowEvent;
 import dev.bumblecat.bumblecore.client.windows.widgets.IWidget;
 
 import java.awt.*;

@@ -1,4 +1,4 @@
-package dev.bumblecat.bumblecore.client.windows.events;
+package dev.bumblecat.bumblecore.client.conveys;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 
