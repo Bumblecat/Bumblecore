@@ -1,69 +1,74 @@
 package dev.bumblecat.bumblecore.common.windows;
 
+import dev.bumblecat.bumblecore.common.objects.cubes.tiles.ICustomTileEntity;
+import dev.bumblecat.bumblecore.common.storage.IInventory;
+import dev.bumblecat.bumblecore.common.storage.IInventoryProvider;
+
+import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.MenuType;
-import net.minecraft.world.inventory.Slot;
 
-import java.awt.*;
+public abstract class CommonWindow<T extends ICustomTileEntity> extends CommonWindowAbstract implements ICommonWindow {
 
-import org.jetbrains.annotations.Nullable;
-
-public abstract class CommonWindow extends CommonWindowAbstract implements ICommonWindow {
-
-    private final Inventory playerInventory;
+    private final IInventory inventory;
+    private final T blockEntity;
 
     /**
-     * @param windowType
+     * @param provider
      * @param windowId
      * @param inventory
      */
-    public CommonWindow(@Nullable MenuType<?> windowType, int windowId, Inventory inventory) {
-        this(windowType, windowId, inventory, 0);
+    public CommonWindow(MenuType<?> provider, int windowId, Inventory inventory) {
+        this(provider, windowId, inventory, 0);
     }
 
     /**
-     * @param windowType
+     * @param provider
      * @param windowId
      * @param inventory
-     * @param slots
+     * @param blockPos
      */
-    public CommonWindow(@Nullable MenuType<?> windowType, int windowId, Inventory inventory, int slots) {
-        super(windowType, windowId, slots);
-        this.playerInventory = inventory;
+    public CommonWindow(MenuType<?> provider, int windowId, Inventory inventory, BlockPos blockPos) {
+        this(provider, windowId, inventory, blockPos, 0);
     }
 
     /**
-     * @param position
+     * @param provider
+     * @param windowId
+     * @param inventory
+     * @param slotCount
      */
-    public void addPlayerInventory(Point position) {
-
-        int posX = 0, posY = 0;
-        for (int i = 0; i < 3; ++i) {
-            posY = i * 18;
-            for (int j = 0; j < 9; ++j) {
-                posX = j * 18;
-                addSlot(new Slot(this.getPlayerInventory(), j + i * 9 + 9,
-                        (int) (position.getX() + 8) + posX,
-                        (int) (position.getY() + 18) + posY
-                ));
-            }
-        }
-
-        posY = posY + (4 + 18);
-        for (int i = 0; i < 9; ++i) {
-            posX = i * 18;
-            addSlot(new Slot(this.getPlayerInventory(), i,
-                    (int) (position.getX() + 8) + posX,
-                    (int) (position.getY() + 18) + posY
-            ));
-        }
+    public CommonWindow(MenuType<?> provider, int windowId, Inventory inventory, int slotCount) {
+        this(provider, windowId, inventory, null, slotCount);
     }
 
+    /**
+     * @param provider
+     * @param windowId
+     * @param inventory
+     * @param slotCount
+     * @param blockPos
+     */
+    public CommonWindow(MenuType<?> provider, int windowId, Inventory inventory, BlockPos blockPos, int slotCount) {
+        super(provider, windowId, inventory, slotCount);
+
+        System.out.println(blockPos);
+
+        this.blockEntity = (blockPos != null) ? (T) getPlayer().getLevel().getBlockEntity(blockPos) : null;
+        this.inventory = (this.blockEntity instanceof IInventoryProvider) ? ((IInventoryProvider) this.blockEntity).getInventory() : null;
+    }
 
     /**
      * @return
      */
-    public Inventory getPlayerInventory() {
-        return this.playerInventory;
+    public T getBlockEntity() {
+        return this.blockEntity;
+    }
+
+    /**
+     * @return
+     */
+    public IInventory getWindowInventory() {
+        return this.inventory;
     }
 }

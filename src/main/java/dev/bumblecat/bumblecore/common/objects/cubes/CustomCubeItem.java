@@ -16,13 +16,6 @@ public class CustomCubeItem extends BlockItem {
     }
 
 
-
-
-
-
-
-
-
     public CustomCubeItem(Block parent, Properties properties) {
         super(parent, properties);
     }

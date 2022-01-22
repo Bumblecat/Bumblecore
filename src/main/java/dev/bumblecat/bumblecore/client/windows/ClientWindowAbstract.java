@@ -27,9 +27,8 @@ abstract class ClientWindowAbstract<T extends AbstractContainerMenu> extends Abs
     private final Dimension minSize = new Dimension(176, 100);
     private final Dimension maxSize = new Dimension(256, 256);
     private final Dimension invSize = new Dimension(176, 100);
-
-    private int labelColor = 0xC7C7C7;
     private final int labelColorInventory = 0x404040;
+    private int labelColor = 0xC7C7C7;
 
     /**
      * @param container

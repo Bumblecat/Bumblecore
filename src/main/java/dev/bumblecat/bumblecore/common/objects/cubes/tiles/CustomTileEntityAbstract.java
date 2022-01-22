@@ -8,7 +8,6 @@ import net.minecraft.world.level.block.state.BlockState;
 abstract class CustomTileEntityAbstract extends BlockEntity {
 
 
-
     public CustomTileEntityAbstract(BlockEntityType<?> entityType, BlockPos blockPos, BlockState blockState) {
         super(entityType, blockPos, blockState);
     }

@@ -26,7 +26,7 @@ public interface IWindowProvider extends MenuProvider {
     Component getDisplayName();
 
     /**
-     * @param menuId
+     * @param windowId
      * @param inventory
      * @param player
      *
@@ -34,11 +34,11 @@ public interface IWindowProvider extends MenuProvider {
      */
     @Nullable
     @Override
-    default AbstractContainerMenu createMenu(int menuId, Inventory inventory, Player player) {
+    default AbstractContainerMenu createMenu(int windowId, Inventory inventory, Player player) {
 
         /**
          * re-route to getWindow(a, b, c)
          */
-        return (CommonWindow) getWindow(menuId, inventory, player);
+        return (CommonWindow) getWindow(windowId, inventory, player);
     }
 }

@@ -9,13 +9,13 @@ import net.minecraft.world.level.block.state.BlockState;
 
 import org.jetbrains.annotations.Nullable;
 
-public interface ITileEntityCube extends EntityBlock, IDismantable {
+public interface ITileEntityCube extends EntityBlock, ICustomCube, IDismantable {
 
 
     /**
-     *
      * @param blockState
      * @param blockPos
+     *
      * @return
      */
     ICustomTileEntity getTileEntity(BlockState blockState, BlockPos blockPos);

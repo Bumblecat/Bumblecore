@@ -1,7 +1,6 @@
 package dev.bumblecat.bumblecore.common.objects.cubes.tiles;
 
 import dev.bumblecat.bumblecore.common.objects.cubes.CustomCube;
-import dev.bumblecat.bumblecore.common.objects.cubes.ICustomCube;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.TranslatableComponent;
@@ -23,7 +22,6 @@ public class CustomTileEntity<T extends CustomCube> extends CustomTileEntityAbst
     }
 
     /**
-     *
      * @param object
      * @param entityType
      * @param blockPos
@@ -36,7 +34,6 @@ public class CustomTileEntity<T extends CustomCube> extends CustomTileEntityAbst
 
 
     /**
-     *
      * @return
      */
     public TranslatableComponent getDescription() {
@@ -44,10 +41,9 @@ public class CustomTileEntity<T extends CustomCube> extends CustomTileEntityAbst
     }
 
     /**
-     *
      * @return
      */
-    public  T getOwner() {
-        return (T)this.object;
+    public T getOwner() {
+        return this.object;
     }
 }
