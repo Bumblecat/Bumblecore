@@ -11,4 +11,6 @@ abstract class CustomTileEntityAbstract extends BlockEntity {
     public CustomTileEntityAbstract(BlockEntityType<?> entityType, BlockState blockState, BlockPos blockPos) {
         super(entityType, blockPos, blockState);
     }
+
+
 }

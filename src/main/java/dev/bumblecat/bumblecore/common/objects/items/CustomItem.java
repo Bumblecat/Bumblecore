@@ -1,10 +1,8 @@
 package dev.bumblecat.bumblecore.common.objects.items;
 
+import dev.bumblecat.bumblecore.common.objects.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -44,16 +42,29 @@ public class CustomItem extends CustomItemAbstract implements ICustomItem {
         super(variables, nutrients);
     }
 
-    /**
-     * @param level
-     * @param player
-     * @param hand
-     * @return
-     */
+
     @Override
-    public InteractionResultHolder<ItemStack> onInteract(Level level, Player player, InteractionHand hand) {
-        return InteractionResultHolder.pass(player.getItemInHand(hand));
+    public InteractionResult<ItemStack> onInteraction(ItemStack stack, ObjectEventItemArgs arguments) {
+        return new InteractionResult<>(stack, InteractionResultType.PASS);
     }
+
+    @Override
+    public InteractionResult<ItemStack> onInteractionFinished(ItemStack stack, ObjectEventItemArgs arguments) {
+        return new InteractionResult<>(stack, InteractionResultType.PASS);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /**
      * @param stack

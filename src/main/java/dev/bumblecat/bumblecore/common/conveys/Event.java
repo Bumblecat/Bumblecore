@@ -30,7 +30,7 @@ public abstract class Event implements IEvent {
     /**
      * @return
      */
-    public IEvent setCanceled() {
+    public <T extends IEvent> T setCanceled() {
         return this.setCanceled(true);
     }
 
@@ -38,8 +38,8 @@ public abstract class Event implements IEvent {
      * @param value
      * @return
      */
-    public IEvent setCanceled(boolean value) {
+    public <T extends IEvent> T setCanceled(boolean value) {
         this.canceled = value;
-        return this;
+        return (T)this;
     }
 }

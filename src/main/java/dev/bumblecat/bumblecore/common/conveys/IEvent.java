@@ -10,13 +10,13 @@ public interface IEvent {
     /**
      * @return
      */
-    IEvent setCanceled();
+    <T extends IEvent> T setCanceled();
 
     /**
      * @param value
      * @return
      */
-    IEvent setCanceled(boolean value);
+    <T extends IEvent> T setCanceled(boolean value);
 
     /**
      * @return
