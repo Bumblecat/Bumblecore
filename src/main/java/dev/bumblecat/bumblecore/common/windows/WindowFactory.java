@@ -28,9 +28,25 @@ public class WindowFactory {
      * @return
      */
     public static <T extends CommonWindow> IContainerFactory<T> factorize(IWindowType<T> window) {
-
         return (windowId, inventory, byteBuffer) -> window.create(windowId, inventory, byteBuffer.readBlockPos());
     }
+
+
+    /**
+     * @param player
+     * @param provider
+     * @param <T>
+     *
+     * @return
+     */
+    public static <T extends CommonWindow> InteractionResult callWindow(Player player, IWindowProvider provider) {
+        if (player.getLevel().isClientSide())
+            return InteractionResult.SUCCESS;
+
+        NetworkHooks.openGui((ServerPlayer) player, provider);
+        return InteractionResult.CONSUME;
+    }
+
 
     /**
      * @param player
@@ -43,8 +59,6 @@ public class WindowFactory {
     public static <T extends CommonWindow> InteractionResult callWindow(Player player, BlockPos blockPos, IWindowType<T> window) {
         if (player.getLevel().isClientSide())
             return InteractionResult.SUCCESS;
-
-        System.out.println("callWindow: " + blockPos);
 
         NetworkHooks.openGui((ServerPlayer) player, new WindowProvider<>(player, blockPos, window), buffer -> buffer.writeBlockPos(blockPos));
         return InteractionResult.CONSUME;

@@ -1,6 +1,9 @@
 package dev.bumblecat.bumblecore.common.objects.items;
 
-import dev.bumblecat.bumblecore.common.objects.*;
+import dev.bumblecat.bumblecore.common.objects.InteractionResult;
+import dev.bumblecat.bumblecore.common.objects.InteractionResultType;
+import dev.bumblecat.bumblecore.common.objects.ObjectEventItemArgs;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Player;
@@ -42,32 +45,32 @@ public class CustomItem extends CustomItemAbstract implements ICustomItem {
         super(variables, nutrients);
     }
 
-
+    /**
+     * @param stack
+     * @param arguments
+     *
+     * @return
+     */
     @Override
     public InteractionResult<ItemStack> onInteraction(ItemStack stack, ObjectEventItemArgs arguments) {
         return new InteractionResult<>(stack, InteractionResultType.PASS);
     }
 
+    /**
+     * @param stack
+     * @param arguments
+     *
+     * @return
+     */
     @Override
     public InteractionResult<ItemStack> onInteractionFinished(ItemStack stack, ObjectEventItemArgs arguments) {
         return new InteractionResult<>(stack, InteractionResultType.PASS);
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
     /**
      * @param stack
+     *
      * @return
      */
     public int getBarColor(ItemStack stack) {
@@ -77,6 +80,7 @@ public class CustomItem extends CustomItemAbstract implements ICustomItem {
     /**
      * @param stack
      * @param enchantment
+     *
      * @return
      */
     @Override
@@ -89,6 +93,7 @@ public class CustomItem extends CustomItemAbstract implements ICustomItem {
      * @param level
      * @param blockPos
      * @param player
+     *
      * @return
      */
     @Override
@@ -99,6 +104,7 @@ public class CustomItem extends CustomItemAbstract implements ICustomItem {
     /**
      * @param stack
      * @param state
+     *
      * @return
      */
     @Override
