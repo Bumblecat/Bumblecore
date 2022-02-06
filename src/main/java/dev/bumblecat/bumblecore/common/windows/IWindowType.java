@@ -13,4 +13,13 @@ public interface IWindowType<T> {
      * @return
      */
     T create(int windowId, Inventory inventory, BlockPos blockPos);
+
+    /**
+     * @param windowId
+     * @param inventory
+     * @param count
+     *
+     * @return
+     */
+    T create(int windowId, Inventory inventory, int count);
 }

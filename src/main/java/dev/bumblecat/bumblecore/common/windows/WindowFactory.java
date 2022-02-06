@@ -31,7 +31,6 @@ public class WindowFactory {
         return (windowId, inventory, byteBuffer) -> window.create(windowId, inventory, byteBuffer.readBlockPos());
     }
 
-
     /**
      * @param player
      * @param provider
@@ -63,4 +62,13 @@ public class WindowFactory {
         NetworkHooks.openGui((ServerPlayer) player, new WindowProvider<>(player, blockPos, window), buffer -> buffer.writeBlockPos(blockPos));
         return InteractionResult.CONSUME;
     }
+
+
+
+
+
+
+
+
+
 }
